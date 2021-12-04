@@ -7,7 +7,7 @@ const getTypeData = async (type) => {
     url: `https://pokeapi.co/api/v2/type/${type}`,
   });
 
-  return res.data.name;
+  return res.data;
 };
 
 module.exports = getTypeData;
