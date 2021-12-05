@@ -1,7 +1,7 @@
 const { buildScoreMap } = require('./build-score-map');
 
-exports.buildAndSortScoreMap = async (scoreMap) => {
-  await buildScoreMap(scoreMap);
+exports.buildAndSortScoreMap = async (scoreMap, multiplier) => {
+  await buildScoreMap(scoreMap, multiplier);
 
   const size = scoreMap.size;
   let sortedScoreList = [];

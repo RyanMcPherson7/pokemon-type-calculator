@@ -1,15 +1,15 @@
-exports.calculateScore = (dmgMap, combo) => {
+exports.calculateScore = (dmgMap, combo, multiplier) => {
   let score = 0;
 
   // pure type
   if (combo.length === 1) {
     const [type] = combo;
-    score -= dmgMap.get(type).double_damage_from.length;
-    score += dmgMap.get(type).double_damage_to.length;
-    score += dmgMap.get(type).half_damage_from.length;
-    score -= dmgMap.get(type).half_damage_to.length;
-    score += dmgMap.get(type).no_damage_from.length * 2;
-    score -= dmgMap.get(type).no_damage_to.length * 2;
+    score -= dmgMap.get(type).double_damage_from.length * multiplier.dubDmgFromMult;
+    score += dmgMap.get(type).double_damage_to.length * multiplier.dubDmgToMult;
+    score += dmgMap.get(type).half_damage_from.length * multiplier.halfDmgFromMult;
+    score -= dmgMap.get(type).half_damage_to.length * multiplier.halfDmgToMult;
+    score += dmgMap.get(type).no_damage_from.length * multiplier.noDmgFromMult;
+    score -= dmgMap.get(type).no_damage_to.length * multiplier.noDmgToMult;
   }
   // duel type
   else {
@@ -44,12 +44,12 @@ exports.calculateScore = (dmgMap, combo) => {
       });
     });
 
-    score -= dubDmgFrom.size;
-    score += dubDmgTo.size;
-    score += halfDmgFrom.size;
-    score -= halfDmgTo.size;
-    score += noDmgFrom.size * 2;
-    score -= noDmgTo.size * 2;
+    score -= dubDmgFrom.size * multiplier.dubDmgFromMult;
+    score += dubDmgTo.size * multiplier.dubDmgToMult;
+    score += halfDmgFrom.size * multiplier.halfDmgFromMult;
+    score -= halfDmgTo.size * multiplier.halfDmgToMult;
+    score += noDmgFrom.size * multiplier.noDmgFromMult;
+    score -= noDmgTo.size * multiplier.noDmgToMult;
   }
 
   return score;
