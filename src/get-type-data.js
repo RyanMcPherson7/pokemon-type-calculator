@@ -1,5 +1,4 @@
 const axios = require('axios');
-// import axios from 'axios';
 
 exports.getTypeData = async (type) => {
   const res = await axios({
