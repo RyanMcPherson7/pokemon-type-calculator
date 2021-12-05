@@ -16,14 +16,7 @@ exports.buildTypeDataSets = async (typeDmgMap, typeCombos) => {
     typeCombos.push([types[i]]);
 
     // duel types
-    for (let j = i + 1; j < 18; j++) {
+    for (let j = i + 1; j < 18; j++) 
       typeCombos.push([types[i], types[j]]);
-    }
   }
-
-  // testing
-  typeCombos.forEach((item) => {
-    console.log(item);
-  });
-  console.log(typeCombos.length);
 };

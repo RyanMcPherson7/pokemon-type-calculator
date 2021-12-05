@@ -1,5 +1,9 @@
-const {buildTypeDataSets} = require('./src/build-type-data-sets')
+const { buildScoreMap } = require('./src/build-score-map');
+const { sortScoreMap } = require('./src/sort-score-map');
 
-let dmgMap = new Map();
-let combos = [];
-buildTypeDataSets(dmgMap, combos);
+let map = new Map();
+buildScoreMap(map);
+
+setTimeout(() => {
+  sortScoreMap(map);
+}, 4000);
