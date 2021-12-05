@@ -1,4 +1,4 @@
-const getTypeData = require('./src/get-type-data');
+const { getTypeData } = require('./src/get-type-data');
 
 let typeDamageRelationMap = new Map();
 
@@ -10,23 +10,14 @@ const createDamageSets = async () => {
   }
 
   typeDamageRelationMap.forEach((typeRelation, typeName) => {
-    // console.log(typeName, typeRelation);
     let score = 0;
-    let typeCount = 0;
-    score -= typeRelation.double_damage_from.length * 2;
-    typeCount += typeRelation.double_damage_from.length;
-    score += typeRelation.double_damage_to.length * 2;
-    typeCount += typeRelation.double_damage_to.length;
-    score += typeRelation.half_damage_from.length * 2;
-    typeCount += typeRelation.half_damage_from.length;
-    score -= typeRelation.half_damage_to.length * 2;
-    typeCount += typeRelation.half_damage_to.length;
-    score += typeRelation.no_damage_from.length * 4;
-    typeCount += typeRelation.no_damage_from.length;
-    score -= typeRelation.no_damage_to.length * 4;
-    typeCount += typeRelation.no_damage_to.length;
-
-    score += 18 - typeCount;
+    const damageMult = 1;
+    score -= typeRelation.double_damage_from.length * damageMult;
+    score += typeRelation.double_damage_to.length * damageMult;
+    score += typeRelation.half_damage_from.length * damageMult;
+    score -= typeRelation.half_damage_to.length * damageMult;
+    score += typeRelation.no_damage_from.length * damageMult * 2;
+    score -= typeRelation.no_damage_to.length * damageMult * 2;
 
     console.log(typeName, score);
   });
