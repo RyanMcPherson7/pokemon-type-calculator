@@ -18,12 +18,7 @@ exports.buildScoreMap = async (scoreMap) => {
     else {
       const [type1, type2] = combo;
       const score = calculateScore(dmgMap, combo);
-      scoreMap.set(`${type1} / ${type2}`, score);
+      scoreMap.set(`${type1} | ${type2}`, score);
     }
   });
-
-//   // testing
-//   scoreMap.forEach((score, type) => {
-//     console.log(type, score);
-//   });
 };
